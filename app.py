@@ -6,7 +6,7 @@ import numpy as np
 
 ########### Define your variables ######
 myheading1="I'm going going, back back, to Cali Cali. Uh huh - Pat Gelvin"
-image1='California_Map.jpg'
+image1='California.jpeg'
 tabtitle = 'Housing Prices - Pat Gelvin'
 sourceurl = 'https://github.com/ageron/handson-ml2/blob/master/02_end_to_end_machine_learning_project.ipynb'
 githublink = 'https://github.com/pgelvin/502-california-housing-regression.git'
@@ -33,7 +33,7 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1("I'm going going, back back, to Cali Cali. Uh huh - Pat Gelvin"),
-    html.Img(src=app.get_asset_url(image1), style={'width': '100%', 'height': 'auto'}, className='four columns'),
+    html.Img(src=app.get_asset_url(image1), style={'width': '25%', 'height': 'auto'}, className='four columns'),
     html.H4('What is the Median Home Value of a Neighborhood?'),
     html.H6('Features of Neighborhood:'),    
     

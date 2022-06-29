@@ -22,8 +22,14 @@ with open('analysis/model_components/rmse_fig.pkl', 'rb') as f:
 with open('analysis/model_components/std_scaler.pkl', 'rb') as f:
     std_scaler=pickle.load(f)
 with open('analysis/model_components/lin_reg.pkl', 'rb') as f:
-    lin_reg=pickle.load(f)
-
+     lin_reg=pickle.load(f)
+#with open('analysis/model_components/knn_model.pkl', 'rb') as f:
+#    knn_model=pickle.load(f)
+#with open('analysis/model_components/forest_model.pkl', 'rb') as f:
+#    forest_model=pickle.load(f)
+    
+# model = lin_reg
+    
 ########### Initiate the app
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
@@ -33,10 +39,11 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1('California Neighborhoods'),
-    html.Img(src=app.get_asset_url(image1), style={'width': '50%', 'height': '50%'}, className='four columns'),
+    html.Div([
+        html.Img(src=app.get_asset_url(image1), style={'width': '50%', 'height': '50%'}, className='four columns'),
     html.H4('What is the Median Home Value of a Neighborhood?'),
-    html.H6('Features of Neighborhood:'),    
-    
+    html.H6('Neighborhood Features:'),
+
     ### Prediction Block
     html.Div(children=[
 
@@ -101,7 +108,7 @@ app.layout = html.Div(children=[
                 ], className='twelve columns'),
 
         html.Div(children=[
-                html.H3('Linear Regression Coefficients (standardized features)'),
+                html.H3('K Nearest Neighbor Coefficients (standardized features)'),
                 dcc.Graph(figure=coefs, id='coefs_fig')
                 ], className='twelve columns'),
 
@@ -149,7 +156,6 @@ def make_prediction(clicks, longitude, latitude, housing_median_age, total_rooms
         y = lin_reg.predict(std_inputs)
         formatted_y = "${:,.2f}".format(y[0])
         return formatted_y
-
 
 
 ############ Deploy

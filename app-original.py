@@ -5,11 +5,10 @@ import pickle
 import numpy as np
 
 ########### Define your variables ######
-myheading1="I'm going going, back back, to Cali Cali. Uh huh - Pat Gelvin"
-image1='California_Map.jpg'
-tabtitle = 'Housing Prices'
+myheading1='California Housing Dataset'
+tabtitle = 'Cali Housing'
 sourceurl = 'https://github.com/ageron/handson-ml2/blob/master/02_end_to_end_machine_learning_project.ipynb'
-githublink = 'https://github.com/pgelvin/502-california-housing-regression.git'
+githublink = 'https://github.com/plotly-dash-apps/502-california-housing-regression'
 
 
 ########### open the pickle files ######
@@ -33,10 +32,9 @@ app.title=tabtitle
 ########### Set up the layout
 app.layout = html.Div(children=[
     html.H1('California Neighborhoods'),
-    html.Img(src=app.get_asset_url(image1), style={'width': '50%', 'height': '50%'}, className='four columns'),
     html.H4('What is the Median Home Value of a Neighborhood?'),
-    html.H6('Features of Neighborhood:'),    
-    
+    html.H6('Features of Neighborhood:'),
+
     ### Prediction Block
     html.Div(children=[
 
@@ -80,8 +78,8 @@ app.layout = html.Div(children=[
                     html.H6('Median Home Value (Predicted):'),
                     html.Button(children='Submit', id='submit-val', n_clicks=0,
                                     style={
-                                    'background-color': 'black',
-                                    'color': 'green',
+                                    'background-color': 'red',
+                                    'color': 'white',
                                     'margin-left': '5px',
                                     'verticalAlign': 'center',
                                     'horizontalAlign': 'center'}
